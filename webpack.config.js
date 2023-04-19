@@ -14,6 +14,9 @@ module.exports = {
     })
   ],
   devServer: {
+    proxy: {
+      '/api': 'http://localhost:3000',
+    },
     static: {
       directory: path.resolve(__dirname, './public'),
     },
