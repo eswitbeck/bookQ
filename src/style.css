@@ -30,6 +30,17 @@ body {
 #bookCreator {
   width: auto;
   height: calc(.2 * var(--pairHeight));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#bookCreator > * {
+  display: inline-block;
+}
+
+#bookCreator span * {
+  margin: 2px;
 }
 
 #completedWindow {
