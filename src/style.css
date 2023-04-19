@@ -1,4 +1,39 @@
-button {
-  height: 100px;
-  width: 100px;
+body {
+  margin: 0px;
 }
+
+#root {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+}
+
+#mainContainer {
+  width: 80%;
+  height: auto;
+  --margin: 10px;
+  --pairHeight: calc(.35 * (100% - 4 * var(--margin)))
+}
+
+#mainContainer > * {
+  margin: var(--margin);
+  border: black 1px solid;
+  border-radius: 7px;
+}
+
+#pendingWindow {
+  width: auto;
+  height: var(--pairHeight);
+}
+
+#bookCreator {
+  width: auto;
+  height: calc(.2 * var(--pairHeight));
+}
+
+#completedWindow {
+  width: auto;
+  height: var(--pairHeight);
+}
+
