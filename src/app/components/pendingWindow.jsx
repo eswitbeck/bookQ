@@ -21,7 +21,7 @@ const bookToComponent = ({
                          endDate
                         }) => {
   return <Book
-           status='pending'
+           mode='pending'
            position={position}
            title={title}
            author={author}

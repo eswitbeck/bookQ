@@ -1,4 +1,12 @@
+:root {
+  --background: lightgrey;
+  --secondary: white;
+  --borderRadius: 5px;
+  --margin: 10px;
+}
+
 body {
+  background-color: var(--background);
   margin: 0px;
 }
 
@@ -10,17 +18,20 @@ body {
 #mainContainer {
   width: 95%;
   height: auto;
-  --margin: 10px;
   --internalMargin: 3px;
   --pairHeight: calc(.4 * (100vh - 4 * var(--margin)));
   --itemHeight: calc((var(--pairHeight) + var(--internalMargin)) / 11);
-  --borderRadius: 7px;
 }
 
 #mainContainer > * {
   margin: var(--margin);
   border: black 1px solid;
   border-radius: var(--borderRadius);
+  background-color: var(--secondary);
+}
+
+#mainContainer > * > * {
+  margin: var(--internalMargin);
 }
 
 #pendingWindow {
@@ -44,11 +55,15 @@ body {
   height: var(--pairHeight);
 }
 
+#completedWindow .book input[name=startDate], #completedWindow .book input[name=endDate] {
+  border: none;
+  background-color: inherit;
+}
+
 .book {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2px; 
   flex-wrap: nowrap;
   margin: var(--internalMargin);
   height: var(--itemHeight);
@@ -56,11 +71,14 @@ body {
   max-height: 1.2cm;
   border: black 1px solid;
   border-radius: var(--borderRadius);
+  background-color: var(--background);
 }
 
 .book input {
   margin: var(--internalMargin);
   width: 100%;
+  border: black 1px solid;
+  border-radius: var(--borderRadius);
 }
 
 .book input[name=position], .book input[name=publicationYear] {
@@ -79,6 +97,9 @@ body {
 }
 
 .book button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-height: calc(100% - 2 * var(--internalMargin));
   margin: var(--internalMargin);
   white-space: nowrap;

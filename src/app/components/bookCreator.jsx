@@ -11,9 +11,9 @@ const bookCreator = () => {
 
   return (
     <div id='bookCreator' >
-      <p>Add:</p>
+      <h4>Add:</h4>
         {/* needs onSubmit */}
-        <Book />
+        <Book mode='creator'/>
     </div>
   );
 };
