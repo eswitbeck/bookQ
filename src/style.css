@@ -98,7 +98,7 @@ body {
 }
 
 .book input[name=startDate], .book input[name=endDate] {
-  max-width: 2.9cm;
+  max-width: 2.95cm;
 }
 
 .book button {

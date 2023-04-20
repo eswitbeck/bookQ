@@ -18,7 +18,7 @@ export default () => {
   }
   return (
   <section id='completedWindow'>
-    <h4>Read</h4>
+    <h4>Read:</h4>
     {years.map(([year, booklist]) => 
       <Year key={nanoid()} year={year} booklist={booklist} />)}
   </section>

@@ -8,7 +8,7 @@ export default () => {
 
   return (
     <section id='pendingWindow'>
-      <h4>To Read</h4>
+      <h4>To Read:</h4>
       {books.map(b => 
         bookToComponent(b, 'pending'))}
     </section>
