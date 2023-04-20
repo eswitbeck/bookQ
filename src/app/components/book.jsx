@@ -21,10 +21,8 @@ export default props => {
 
   const onUpdate = e => {
     e.preventDefault();
-    console.log('onUpdate', e.target);
     const update = props.mode === 'pending' ? updatePending : updateCompleted;
     let newValue = e.target.value;
-    console.log('onUpdate value', e.target.value);
     if (newValue && newValue.match(/^\d*$/)) newValue = Number(newValue);
     const field = e.target.name;
     if (typeof newValue === 'number' || field !== 'position') {
