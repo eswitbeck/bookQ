@@ -1,23 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updatePending, updateCompleted } from '../reducers/bookReducer.js';
 
 export default props => {
-  
-  /* need pending/completed boolean for conditional rendering */
-  /* each needs onChange */
-  /* mode enum: pending, creator, complete */
-
-  switch (props.mode) {
-    case 'pending':
-      break;
-    case 'complete':
-      break;
-  }
   const totalPending = useSelector(state => state.books.pending.length);
 
   const dispatch = useDispatch();
-  // variable dispatch
 
   const onUpdate = e => {
     e.preventDefault();
@@ -74,7 +62,7 @@ export default props => {
         placeholder='doi'
         onChange={onUpdate}
       />
-      {props.mode === 'pending' ? <label>'Started:'</label> : null}
+      {props.mode === 'pending' ? <label>Started:</label> : null}
       <input
         type='date'
         name='startDate'
@@ -87,7 +75,7 @@ export default props => {
       <input
         type='date'
         name='endDate'
-        value={props.endDate}
+        value={props.mode === 'completed' ? props.endDate: undefined}
         onChange={onUpdate}
       />
       {props.mode === 'pending'

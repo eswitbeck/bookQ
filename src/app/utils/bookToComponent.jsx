@@ -1,4 +1,5 @@
 import React from 'react';
+import { nanoid } from '@reduxjs/toolkit';
 import Book from '../components/book.jsx';
 
 export default ({
@@ -13,7 +14,7 @@ export default ({
                 mode) => (
   <Book
      mode={mode}
-     key={position}
+     key={nanoid()}
      position={position}
      title={title}
      author={author}

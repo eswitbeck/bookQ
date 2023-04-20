@@ -33,7 +33,7 @@ export const bookSlice = createSlice({
   name: 'books',
   initialState: {
     pending: [],
-    completed: [testBook1, testBook2],
+    completed: [],
   },
   reducers: {
     addBook: (state, action) => {
@@ -58,7 +58,6 @@ export const bookSlice = createSlice({
                                              { ...b, position: b.position - 1 }
                                                      ))
                            : [];
-        console.log(preList, postList);
         return {
                 pending: preList.concat(postList),
                 completed: state.completed.concat([{
