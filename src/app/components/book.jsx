@@ -24,16 +24,20 @@ export default props => {
     console.log('onUpdate', e.target);
     const update = props.mode === 'pending' ? updatePending : updateCompleted;
     let newValue = e.target.value;
+    console.log('onUpdate value', e.target.value);
     if (newValue && newValue.match(/^\d*$/)) newValue = Number(newValue);
-    dispatch(update({
-                     index: props.position,
-                     field: e.target.name,
-                     newValue: newValue,
-                    }));
+    const field = e.target.name;
+    if (typeof newValue === 'number' || field !== 'position') {
+      dispatch(update({
+                       index: props.position,
+                       field: field,
+                       newValue: newValue,
+                      }));
+    }
   }
 
   return (
-    <form className='book'> 
+    <div className='book'> 
       {props.mode === 'pending'
         ?   <input
             type='number'
@@ -94,6 +98,6 @@ export default props => {
           </button>
         : null
       }
-    </form>
+    </div>
   );
 }

@@ -46,6 +46,7 @@ export const bookSlice = createSlice({
       state.pending.sort((a, b) => a.position - b.position);
     },
     updatePending: (state, action) => {
+      //needs full functional rewrite
       const { index, field, newValue } = action.payload;
       if (field === 'position') {
         const oldValue = state.pending[index - 1][field];
@@ -65,8 +66,14 @@ export const bookSlice = createSlice({
         updatedBook.position = state.completed.length;
         state.completed.push(updatedBook);
         if (state.pending.length) {
+          const preList = index - 1 ? state.pending.slice(0, index - 1) : [];
           const postList = state.pending.slice(index - 1);
-      //    postList.map(b => {b.position--});
+          postList.map(b => console.log(b.position--));
+          state.pending = preList.concat(postList);
+//          const fixList = state.pending.slice(index - 1).map(x => {position: 0});
+//         console.log(fixList);
+//         state.pending = preList.concat(fixList);
+//          fixList.map(b => --b.position);
         }
       }
       if (field === 'position' || field === 'endDate') {
@@ -80,9 +87,8 @@ export const bookSlice = createSlice({
         const updatedBook = state.completed[index];
         state.completed.splice(index, 1);
         if (state.completed.length) {
-          const postList = state.completed.slice(index - 1);
-          /* buggy also */
-          postList.map(b => {b.position--});
+          const postList = state.completed.slice(index);
+          postList.map(b => b.position--);
         }
         updatedBook.position = state.pending.length + 1;
         state.pending.push(updatedBook);

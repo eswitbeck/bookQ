@@ -6,7 +6,7 @@ export default props => {
   const [position, setPosition] = useState(1);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [year, setYear] = useState();
+  const [year, setYear] = useState('');
   const [doi, setDoi] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -35,7 +35,7 @@ export default props => {
       setPosition(1);
       setTitle('');
       setAuthor('');
-      setYear();
+      setYear('');
       setDoi('');
       setStartDate('');
       setEndDate('');

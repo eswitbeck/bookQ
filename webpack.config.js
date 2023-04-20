@@ -11,6 +11,7 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       title: 'dev bookQueue',
+      directory: path.resolve(__dirname, './public'),
     })
   ],
   devServer: {
