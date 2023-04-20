@@ -1,6 +1,7 @@
 import { 
   createSlice,
   createEntityAdapter,
+  nanoid,
 } from '@reduxjs/toolkit';
 
 /*
@@ -38,6 +39,7 @@ export const bookSlice = createSlice({
   reducers: {
     addBook: (state, action) => {
       const { index, book } = action.payload;
+      book.id = nanoid();
       if (index <= state.pending.length) {
         const postList = state.pending.slice(index - 1);
         postList.map(b => b.position++);

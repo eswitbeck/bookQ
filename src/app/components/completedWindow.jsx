@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 import Year from './year.jsx';
 
 export default () => {
@@ -19,7 +20,7 @@ export default () => {
   <section id='completedWindow'>
     <h4>Read</h4>
     {years.map(([year, booklist]) => 
-      <Year key={year} year={year} booklist={booklist} />)}
+      <Year key={nanoid()} year={year} booklist={booklist} />)}
   </section>
   );
 };

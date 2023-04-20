@@ -75,7 +75,7 @@ export default props => {
       <input
         type='date'
         name='endDate'
-        value={props.mode === 'completed' ? props.endDate: undefined}
+        value={props.mode === 'pending' ? undefined : props.endDate}
         onChange={onUpdate}
       />
       {props.mode === 'pending'
