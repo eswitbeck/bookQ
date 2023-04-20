@@ -31,7 +31,7 @@ export default props => {
           },
         })
       );
-      setPosition(0);
+      setPosition(1);
       setTitle('');
       setAuthor('');
       setYear(0);

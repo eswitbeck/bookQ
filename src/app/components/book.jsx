@@ -22,7 +22,7 @@ export default props => {
   const onUpdate = e => {
     const update = props.mode === 'pending' ? updatePending : updateCompleted;
     let newValue = e.target.value;
-    if (newValue.match(/^\d*$/)) newValue = Number(newValue);
+    if (newValue && newValue.match(/^\d*$/)) newValue = Number(newValue);
     dispatch(update({
                      index: props.position,
                      field: e.target.name,
