@@ -12,15 +12,18 @@ export default props => {
     <div className='year'>
       <span>
         <h5>{props.year}</h5>
-        <button onClick={toggle}>{isDropped ? 'v' : '>' }</button>
+        <button onClick={toggle}>
+          {isDropped ? 'v' : '>' }
+        </button>
       </span>
-      <div
-        className='dropdown'
-        style={{display: isDropped ? 'block' : 'none'}}
-      >
+    {
+      isDropped
+      ? <div className='dropdown'>
         {props.booklist.map(
           b => bookToComponent(b, 'complete'))}
       </div>
+      : null
+    }
     </div>
   );
 }
