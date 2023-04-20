@@ -28,7 +28,14 @@ body {
   border: black 1px solid;
   border-radius: var(--borderRadius);
   background-color: var(--secondary);
+  overflow: scroll;
 }
+
+/* not responding? under or over specified?
+#mainContainer > * > h4 {
+  position: sticky;
+}
+*/
 
 #mainContainer > * > * {
   margin: var(--internalMargin);

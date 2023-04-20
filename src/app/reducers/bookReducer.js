@@ -20,12 +20,12 @@ export const bookSlice = createSlice({
     /* payload: { index, book } */
     addBook: (state, action) => {
       const { index, book } = action.payload;
-      console.log(state.pending);
       if (index <= state.pending.length) {
         const postList = state.pending.slice(index - 1);
         postList.map(b => b.position++);
         state.pending.splice(index, 0, book);
       } else state.pending.push(book);
+      state.pending.sort((a, b) => a.position - b.position);
     }
   }
 });

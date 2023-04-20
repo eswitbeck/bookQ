@@ -31,6 +31,13 @@ export default props => {
           },
         })
       );
+      setPosition('');
+      setTitle('');
+      setAuthor('');
+      setYear('');
+      setDoi('');
+      setStartDate('');
+      setEndDate('');
     }
   }
 
