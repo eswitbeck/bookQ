@@ -19,9 +19,9 @@ export default props => {
     if (position) {
       dispatch(
         addBook({
-          index: position, // index
+          index: position,    // index
           book: {
-            position,      // book
+            position,         // book
             title,
             author,
             year,
@@ -31,10 +31,10 @@ export default props => {
           },
         })
       );
-      setPosition('');
+      setPosition(0);
       setTitle('');
       setAuthor('');
-      setYear('');
+      setYear(0);
       setDoi('');
       setStartDate('');
       setEndDate('');
@@ -51,7 +51,7 @@ export default props => {
           value={position}
           min={1}
           max={bookCount + 1}
-          onChange={ e => setPosition(e.target.value) }
+          onChange={ e => setPosition(Number(e.target.value)) }
         />
         <input
           type='text'
@@ -72,7 +72,7 @@ export default props => {
           name='publicationYear'
           value={year}
           placeholder='year'
-          onChange={ e => setYear(e.target.value) }
+          onChange={ e => setYear(Number(e.target.value)) }
         />
         <input
           type='text'
