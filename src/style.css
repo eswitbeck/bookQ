@@ -92,6 +92,7 @@ body {
 .book input[name=author] {
   max-width: 5cm;
 }
+
 .book input[name=startDate], .book input[name=endDate] {
   max-width: 3cm;
 }

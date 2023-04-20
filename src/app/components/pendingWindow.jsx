@@ -1,20 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import bookToComponent from '../utils/bookToComponent.jsx';
 
-const testBook = {
-  position: 1,
-  title: 'Ethics and the Limits of Philosophy',
-  author: 'Williams, Bernard',
-  year: 1985,
-  doi: '',
-  startDate: '2022-12-25',
-  endDate: '',
-};
 
-export default () => (
-<section id='pendingWindow'>
-  <h4>To Read</h4>
-  {bookToComponent(testBook, 'pending')}
-</section>
-);
+export default () => {
+  const books = useSelector(state => state.books.pending);
+
+  return (
+    <section id='pendingWindow'>
+      <h4>To Read</h4>
+      {books.map(b => 
+        bookToComponent(b, 'pending'))}
+    </section>
+  );
+}
 

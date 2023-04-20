@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 export default props => {
   
@@ -6,84 +7,22 @@ export default props => {
   /* each needs onChange */
   /* mode enum: pending, creator, complete */
 
-  let button;
-  let position = (
-        <input
-          type='number'
-          name='position'
-          value={props.position}
-          min={1}
-          max={10 /* max */}
-        />
-      );
-  let doi = (
-      <input
-        type='text'
-        name='doi'
-        value={props.doi}
-        placeholder='doi'
-      />
-  );
-  let start = (
-    <>
-      <label for='startDate'>Started:</label>
-      <input
-        type='date'
-        name='startDate'
-        value={props.startDate}
-      />
-    </>
-  );
-  let end = (
-    <>
-      <label for='endDate'>Finished:</label>
-      <input
-        type='date'
-        name='endDate'
-        value={props.endDate}
-      />
-    </>
-  );
-
   switch (props.mode) {
     case 'pending':
-      button = <button>
-                   Get Bibliography
-               </button>;
-      break;
-    case 'creator':
-      button = <button>
-                   +
-               </button>;
-      end = undefined;
       break;
     case 'complete':
-      position = undefined;
-      start = (
-        <input
-          type='date'
-          name='startDate'
-          value={props.startDate}
-        />
-      );
-      end = (
-        <>
-          <label for='endDate'>-</label>
-          <input
-            type='date'
-            name='endDate'
-            value={props.endDate}
-          />
-        </>
-      );
-      doi = undefined;
-
       break;
   }
 
   return (
     <form className='book'> 
-      {position}
+      <input
+        type='number'
+        name='position'
+        value={props.position}
+        min={1}
+        max={10 /* max */}
+      />
       <input
         type='text'
         name='title'
@@ -102,10 +41,27 @@ export default props => {
         value={props.year}
         placeholder='year'
       />
-      {doi}
-      {start}
-      {end}
-      {button}
+      <input
+        type='text'
+        name='doi'
+        value={props.doi}
+        placeholder='doi'
+      />
+      <label>Started:</label>
+      <input
+        type='date'
+        name='startDate'
+        value={props.startDate}
+      />
+      <label>Finished:</label>
+      <input
+        type='date'
+        name='endDate'
+        value={props.endDate}
+      />
+      <button>
+        Get Bibliography
+      </button>
     </form>
   );
 }

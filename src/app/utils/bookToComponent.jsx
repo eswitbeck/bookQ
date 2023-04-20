@@ -13,6 +13,7 @@ export default ({
                 mode) => (
   <Book
      mode={mode}
+     key={position}
      position={position}
      title={title}
      author={author}
