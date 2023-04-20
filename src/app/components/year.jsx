@@ -9,6 +9,8 @@ export default props => {
   const [dropButton, setButton] = useState('v');
   const toggle = () => setDropped(!isDropped);
 
+  props.booklist.sort((a, b) => a.endDate > b.endDate);
+
   return (
     <div className='year'>
       <span>
