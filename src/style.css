@@ -64,10 +64,6 @@ body {
   margin: 0px;
 }
 
-#completedWindow .book label {
-  margin-left: -13px;
-}
-
 .book {
   display: flex;
   align-items: center;

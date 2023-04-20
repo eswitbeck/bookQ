@@ -10,11 +10,26 @@ const booksAdapter = createEntityAdapter({
 });
 */
 
+const testBook1 = {
+  title: 'Ethics and the Limits of Philosophy',
+  author: 'Williams, Bernard',
+  year: 1985,
+  startDate: '2023-01-15',
+  endDate: '2023-05-01',
+}
+const testBook2 = {
+  title: 'Natural Moralities',
+  author: 'Wong, David',
+  year: 2006,
+  startDate: '2022-01-15',
+  endDate: '2022-05-01',
+}
+
 export const bookSlice = createSlice({
   name: 'books',
   initialState: {
     pending: [],
-    completed: [],
+    completed: [testBook1, testBook2],
   },
   reducers: {
     /* payload: { index, book } */
