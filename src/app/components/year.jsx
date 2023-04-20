@@ -5,7 +5,7 @@ import bookToComponent from '../utils/bookToComponent.jsx';
 
 /* takes in { year, bookList } */
 export default props => {
-  const [isDropped, setDropped] = useState(false);
+  const [isDropped, setDropped] = useState(true);
   const [dropButton, setButton] = useState('v');
   const toggle = () => setDropped(!isDropped);
 
@@ -21,7 +21,7 @@ export default props => {
       isDropped
       ? <div className='dropdown'>
         {props.booklist.map(
-          b => bookToComponent(b, 'complete'))}
+          b => bookToComponent(b, 'completed'))}
       </div>
       : null
     }

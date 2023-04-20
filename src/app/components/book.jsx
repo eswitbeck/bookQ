@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updatePending, updateCompleted } from '../reducers/bookReducer.js';
+import { updatePending, updateCompleted, removeBook } from '../reducers/bookReducer.js';
 
 export default props => {
   const totalPending = useSelector(state => state.books.pending.length);
@@ -20,6 +20,14 @@ export default props => {
                        newValue: newValue,
                       }));
     }
+  }
+
+  const onRemove = e => {
+    e.preventDefault();
+      dispatch(removeBook({
+                           position: props.position,
+                           mode: props.mode,
+                          }));
   }
 
   return (
@@ -84,6 +92,9 @@ export default props => {
           </button>
         : null
       }
+      <button onClick={onRemove}>
+        x
+      </button>
     </div>
   );
 }

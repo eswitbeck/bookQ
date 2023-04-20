@@ -121,9 +121,20 @@ export const bookSlice = createSlice({
         state.pending.push(updatedBook);
       }
     },
+    removeBook: (state, action) => {
+      const { mode, position } = action.payload;
+      if (mode === 'pending') {
+        state[mode].splice(position - 1, 1);
+        if (state[mode].length) state[mode].slice(position - 1).map(b => b.position--);
+      } else {
+        state[mode].splice(position, 1);
+        console.log(state[mode]);
+        if (state[mode].length) state[mode].slice(position).map(b => b.position--);
+      }
+    },
   },
 });
 
-export const { addBook, updatePending, updateCompleted } = bookSlice.actions;
+export const { addBook, updatePending, updateCompleted, removeBook } = bookSlice.actions;
 
 export default bookSlice.reducer;
