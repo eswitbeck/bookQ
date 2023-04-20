@@ -20,6 +20,8 @@ export default props => {
   // variable dispatch
 
   const onUpdate = e => {
+    e.preventDefault();
+    console.log('onUpdate', e.target);
     const update = props.mode === 'pending' ? updatePending : updateCompleted;
     let newValue = e.target.value;
     if (newValue && newValue.match(/^\d*$/)) newValue = Number(newValue);
@@ -77,7 +79,9 @@ export default props => {
         value={props.startDate}
         onChange={onUpdate}
       />
-      <label>{props.mode === 'pending' ? 'Finished:' : '—'}</label>
+      <label>
+        {props.mode === 'pending' ? 'Finished:' : '—'}
+      </label>
       <input
         type='date'
         name='endDate'

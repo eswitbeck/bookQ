@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addBook } from '../reducers/bookReducer.js';
 
 export default props => {
-  const [position, setPosition] = useState('');
+  const [position, setPosition] = useState(1);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
-  const [year, setYear] = useState('');
+  const [year, setYear] = useState();
   const [doi, setDoi] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -16,7 +16,8 @@ export default props => {
   const dispatch = useDispatch();
   const onSubmit = (e) => {
     e.preventDefault();
-    if (position) {
+    e.stopPropagation();
+    if (position && position <= bookCount + 1) {
       dispatch(
         addBook({
           index: position,    // index
@@ -34,7 +35,7 @@ export default props => {
       setPosition(1);
       setTitle('');
       setAuthor('');
-      setYear(0);
+      setYear();
       setDoi('');
       setStartDate('');
       setEndDate('');
