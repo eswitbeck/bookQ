@@ -4,22 +4,23 @@ body {
 
 #root {
   display: flex;
-  width: 100vw;
-  height: 100vh;
   justify-content: center;
 }
 
 #mainContainer {
-  width: 80%;
+  width: 95%;
   height: auto;
   --margin: 10px;
-  --pairHeight: calc(.35 * (100% - 4 * var(--margin)))
+  --internalMargin: 3px;
+  --pairHeight: calc(.4 * (100vh - 4 * var(--margin)));
+  --itemHeight: calc((var(--pairHeight) + var(--internalMargin)) / 11);
+  --borderRadius: 7px;
 }
 
 #mainContainer > * {
   margin: var(--margin);
   border: black 1px solid;
-  border-radius: 7px;
+  border-radius: var(--borderRadius);
 }
 
 #pendingWindow {
@@ -28,19 +29,14 @@ body {
 }
 
 #bookCreator {
-  width: auto;
-  height: calc(.2 * var(--pairHeight));
+  padding: var(--internalMargin);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: var(--internalMargin);
 }
 
-#bookCreator > * {
-  display: inline-block;
-}
-
-#bookCreator span * {
-  margin: 2px;
+#bookCreator .book {
+  width: 100%;
 }
 
 #completedWindow {
@@ -48,3 +44,42 @@ body {
   height: var(--pairHeight);
 }
 
+.book {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px; 
+  flex-wrap: nowrap;
+  margin: var(--internalMargin);
+  height: var(--itemHeight);
+  min-height: .7cm;
+  max-height: 1.2cm;
+  border: black 1px solid;
+  border-radius: var(--borderRadius);
+}
+
+.book input {
+  margin: var(--internalMargin);
+  width: 100%;
+}
+
+.book input[name=position], .book input[name=publicationYear] {
+  max-width: 1.1cm;
+}
+
+.book input[name=doi] {
+  max-width: 5cm;
+}
+
+.book input[name=author] {
+  max-width: 5cm;
+}
+.book input[name=startDate], .book input[name=endDate] {
+  max-width: 3cm;
+}
+
+.book button {
+  max-height: calc(100% - 2 * var(--internalMargin));
+  margin: var(--internalMargin);
+  white-space: nowrap;
+}
