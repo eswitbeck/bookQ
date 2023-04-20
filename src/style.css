@@ -124,3 +124,21 @@ body {
   background-color: inherit;
   border: none;
 }
+
+#popupContainer {
+  --percentage: 0.7;
+  --height: calc(var(--percentage) * 100vh);
+  --width: calc(var(--percentage) * 100vw);
+
+  padding: var(--margin);
+  background-color: var(--background);
+  border: black 1px solid;
+  border-radius: var(--borderRadius);
+  z-index: 2;
+
+  position: absolute;
+  height: var(--height);
+  width: var(--width);
+  top: calc((100vh - var(--height)) / 2);
+  left: calc((100vw - var(--width)) / 2);
+}

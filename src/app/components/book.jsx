@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updatePending, updateCompleted, removeBook } from '../reducers/bookReducer.js';
+import {
+  updatePending,
+  updateCompleted,
+  removeBook
+} from '../reducers/bookReducer.js';
+import { toggle } from '../reducers/appStateReducer.js';
 
 export default props => {
   const totalPending = useSelector(state => state.books.pending.length);
@@ -20,7 +25,7 @@ export default props => {
                        newValue: newValue,
                       }));
     }
-  }
+  };
 
   const onRemove = e => {
     e.preventDefault();
@@ -28,7 +33,11 @@ export default props => {
                            position: props.position,
                            mode: props.mode,
                           }));
-  }
+  };
+
+  const open = () => {
+    dispatch(toggle());
+  };
 
   return (
     <div className='book'> 
@@ -86,12 +95,9 @@ export default props => {
         value={props.mode === 'pending' ? undefined : props.endDate}
         onChange={onUpdate}
       />
-      {props.mode === 'pending'
-        ? <button>
-            Get Bibliography
-          </button>
-        : null
-      }
+      <button onClick={open}>
+        Get bibliography
+      </button>
       <button onClick={onRemove}>
         x
       </button>
