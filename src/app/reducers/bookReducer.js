@@ -11,36 +11,61 @@ const booksAdapter = createEntityAdapter({
 });
 */
 
-const testBook1 = {
-  position: 0,
-  title: 'Ethics and the Limits of Philosophy',
-  author: 'Williams, Bernard',
-  year: 1985,
-  doi: '',
-  startDate: '2023-01-15',
-  endDate: '2023-05-01',
-}
-const testBook2 = {
-  position: 1,
-  title: 'Natural Moralities',
-  author: 'Wong, David',
-  year: 2006,
-  doi: '',
-  startDate: '2022-01-15',
-  endDate: '2022-05-01',
-}
+const testReading = [
+  {
+    id: nanoid(),
+    position: 1,
+    title: 'Ethics and the Limits of Philosophy',
+    author: 'Williams, Bernard',
+    year: 1985,
+    doi: '',
+    startDate: '2023-01-15',
+    endDate: '',
+  },
+  {
+    id: nanoid(),
+    position: 2,
+    title: 'Natural Moralities',
+    author: 'Wong, David',
+    year: 2006,
+    doi: '',
+    startDate: '2022-01-15',
+    endDate: '',
+  },
+  {
+    id: nanoid(),
+    position: 3,
+    title: 'The Dispossessed',
+    author: 'Le Guin, Ursula K.',
+    year: 1974,
+    doi: '',
+    startDate: '2020-07-20',
+    endDate: '',
+  },
+  {
+    id: nanoid(),
+    position: 4,
+    title: 'The Alchemist',
+    author: 'Coelho, Paulo',
+    year: 1988,
+    doi: '',
+    startDate: '2021-09-03',
+    endDate: '',
+  }
+];
 
 export const bookSlice = createSlice({
   name: 'books',
   initialState: {
-    pending: [],
+    pending: testReading,
     completed: [],
   },
   reducers: {
     addBook: (state, action) => {
       const { index, book } = action.payload;
       book.id = nanoid();
-      if (index <= state.pending.length) {
+      if (book.endDate) state.completed.push(book);
+      else if (index <= state.pending.length) {
         const postList = state.pending.slice(index - 1);
         postList.map(b => b.position++);
         state.pending.splice(index, 0, book);
