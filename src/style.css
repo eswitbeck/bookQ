@@ -41,8 +41,9 @@ body {
   margin: var(--internalMargin);
 }
 
-#pendingWindow {
+#pendingWindow, #completedWindow {
   width: auto;
+  min-height: 2.1cm; 
   height: var(--pairHeight);
 }
 
@@ -57,14 +58,14 @@ body {
   width: 100%;
 }
 
-#completedWindow {
-  width: auto;
-  height: var(--pairHeight);
-}
-
 #completedWindow .book input[name=startDate], #completedWindow .book input[name=endDate] {
   border: none;
   background-color: inherit;
+  margin: 0px;
+}
+
+#completedWindow .book label {
+  margin-left: -13px;
 }
 
 .book {
@@ -101,7 +102,7 @@ body {
 }
 
 .book input[name=startDate], .book input[name=endDate] {
-  max-width: 3cm;
+  max-width: 2.9cm;
 }
 
 .book button {

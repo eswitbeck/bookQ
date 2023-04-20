@@ -16,13 +16,15 @@ export default props => {
 
   return (
     <form className='book'> 
-      <input
-        type='number'
-        name='position'
-        value={props.position}
-        min={1}
-        max={10 /* max */}
-      />
+      {props.mode === 'pending'
+        ?   <input
+            type='number'
+            name='position'
+            value={props.position}
+            min={1}
+            max={10 /* max */}
+          />
+        : null}
       <input
         type='text'
         name='title'
@@ -47,21 +49,24 @@ export default props => {
         value={props.doi}
         placeholder='doi'
       />
-      <label>Started:</label>
+      {props.mode === 'pending' ? <label>'Started:'</label> : null}
       <input
         type='date'
         name='startDate'
         value={props.startDate}
       />
-      <label>Finished:</label>
+      <label>{props.mode === 'pending' ? 'Finished:' : '—'}</label>
       <input
         type='date'
         name='endDate'
         value={props.endDate}
       />
-      <button>
-        Get Bibliography
-      </button>
+      {props.mode === 'pending'
+        ? <button>
+            Get Bibliography
+          </button>
+        : null
+      }
     </form>
   );
 }
