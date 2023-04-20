@@ -11,6 +11,7 @@ const booksAdapter = createEntityAdapter({
 */
 
 const testBook1 = {
+  position: 0,
   title: 'Ethics and the Limits of Philosophy',
   author: 'Williams, Bernard',
   year: 1985,
@@ -18,6 +19,7 @@ const testBook1 = {
   endDate: '2023-05-01',
 }
 const testBook2 = {
+  position: 1,
   title: 'Natural Moralities',
   author: 'Wong, David',
   year: 2006,
@@ -45,6 +47,7 @@ export const bookSlice = createSlice({
       const { index, field, newValue } = action.payload;
       const oldValue = state.pending[index - 1][field];
       if (field === 'position') {
+        if (newValue > state.pending.length) return state;
         if (newValue > oldValue) {
           const postList = state.pending.slice(oldValue, newValue);
           postList.map(b => b.position--);
@@ -60,9 +63,13 @@ export const bookSlice = createSlice({
       }
       // if endDate
     },
+    updateCompleted: (state, action) => {
+      const { index, field, newValue } = action.payload;
+      state.completed[index][field] = newValue;
+    },
   }
 });
 
-export const { addBook, updatePending } = bookSlice.actions;
+export const { addBook, updatePending, updateCompleted } = bookSlice.actions;
 
 export default bookSlice.reducer;

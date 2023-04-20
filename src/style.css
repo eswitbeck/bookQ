@@ -85,7 +85,7 @@ body {
   border-radius: var(--borderRadius);
 }
 
-.book input[name=position], .book input[name=publicationYear] {
+.book input[name=position], .book input[name=year] {
   max-width: 1.1cm;
 }
 

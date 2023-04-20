@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updatePending } from '../reducers/bookReducer.js';
+import { updatePending, updateCompleted } from '../reducers/bookReducer.js';
 
 export default props => {
   
@@ -17,6 +17,18 @@ export default props => {
   const totalPending = useSelector(state => state.books.pending.length);
 
   const dispatch = useDispatch();
+  // variable dispatch
+
+  const onUpdate = e => {
+    const update = props.mode === 'pending' ? updatePending : updateCompleted;
+    let newValue = e.target.value;
+    if (newValue.match(/^\d*$/)) newValue = Number(newValue);
+    dispatch(update({
+                     index: props.position,
+                     field: e.target.name,
+                     newValue: newValue,
+                    }));
+  }
 
   return (
     <form className='book'> 
@@ -27,13 +39,7 @@ export default props => {
             value={props.position}
             min={1}
             max={totalPending}
-            onChange={e => {
-              dispatch(
-                updatePending({
-                               index: props.position,
-                               field: 'position',
-                               newValue: Number(e.target.value)
-                              }))}}
+            onChange={onUpdate}
           />
         : null}
       <input
@@ -41,78 +47,42 @@ export default props => {
         name='title'
         value={props.title}
         placeholder='title'
-        onChange={e => {
-          dispatch(
-            updatePending({
-                           index: props.position,
-                           field: 'title',
-                           newValue: e.target.value
-                          }))}}
+        onChange={onUpdate}
       />
       <input
         type='text'
         name='author'
         value={props.author}
         placeholder='author'
-        onChange={e => {
-          dispatch(
-            updatePending({
-                           index: props.position,
-                           field: 'author',
-                           newValue: e.target.value
-                          }))}}
+        onChange={onUpdate}
       />
       <input
         type='text'
-        name='publicationYear'
+        name='year'
         value={props.year}
         placeholder='year'
-        onChange={e => {
-          dispatch(
-            updatePending({
-                           index: props.position,
-                           field: 'year',
-                           newValue: Number(e.target.value)
-                          }))}}
+        onChange={onUpdate}
       />
       <input
         type='text'
         name='doi'
         value={props.doi}
         placeholder='doi'
-        onChange={e => {
-          dispatch(
-            updatePending({
-                           index: props.position,
-                           field: 'doi',
-                           newValue: e.target.value
-                          }))}}
+        onChange={onUpdate}
       />
       {props.mode === 'pending' ? <label>'Started:'</label> : null}
       <input
         type='date'
         name='startDate'
         value={props.startDate}
-        onChange={e => {
-          dispatch(
-            updatePending({
-                           index: props.position,
-                           field: 'startDate',
-                           newValue: e.target.value
-                          }))}}
+        onChange={onUpdate}
       />
       <label>{props.mode === 'pending' ? 'Finished:' : '—'}</label>
       <input
         type='date'
         name='endDate'
         value={props.endDate}
-        onChange={e => {
-          dispatch(
-            updatePending({
-                           index: props.position,
-                           field: 'endDate',
-                           newValue: e.target.value
-                          }))}}
+        onChange={onUpdate}
       />
       {props.mode === 'pending'
         ? <button>
