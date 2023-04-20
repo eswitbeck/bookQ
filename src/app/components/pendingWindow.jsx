@@ -1,5 +1,5 @@
 import React from 'react';
-import Book from './book.jsx';
+import bookToComponent from '../utils/bookToComponent.jsx';
 
 const testBook = {
   position: 1,
@@ -11,32 +11,10 @@ const testBook = {
   endDate: '',
 };
 
-const bookToComponent = ({
-                         position,
-                         title,
-                         author,
-                         year,
-                         doi,
-                         startDate,
-                         endDate
-                        }) => {
-  return <Book
-           mode='pending'
-           position={position}
-           title={title}
-           author={author}
-           year={year}
-           doi={doi}
-           startDate={startDate}
-           endDate={endDate}
-         />
-};
-
-
 export default () => (
 <section id='pendingWindow'>
   <h4>To Read</h4>
-  {bookToComponent(testBook)}
+  {bookToComponent(testBook, 'pending')}
 </section>
 );
 

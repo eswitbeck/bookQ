@@ -1,9 +1,9 @@
 import React from 'react';
-import Book from './book.jsx';
+import Year from './year.jsx';
 
 export default () => (
   <section id='completedWindow'>
     <h4>Read</h4>
-    <Book mode='complete' />
+    <Year year={2022} booklist={[{}]} />
   </section>
 );

@@ -104,3 +104,18 @@ body {
   margin: var(--internalMargin);
   white-space: nowrap;
 }
+
+.year span {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.year span > * {
+  margin: var(--internalMargin);
+}
+
+.year span > button {
+  background-color: inherit;
+  border: none;
+}
