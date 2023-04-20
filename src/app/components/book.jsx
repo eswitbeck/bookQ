@@ -5,7 +5,7 @@ import {
   updateCompleted,
   removeBook
 } from '../reducers/bookReducer.js';
-import { toggle } from '../reducers/appStateReducer.js';
+import { toggle, changeSelection } from '../reducers/appStateReducer.js';
 
 export default props => {
   const totalPending = useSelector(state => state.books.pending.length);
@@ -36,6 +36,7 @@ export default props => {
   };
 
   const open = () => {
+    dispatch(changeSelection(props));
     dispatch(toggle());
   };
 
