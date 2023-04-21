@@ -1,24 +1,40 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggle } from '../reducers/appStateReducer.js';
+import { setPopup } from '../reducers/appStateReducer.js';
 
 export default props => {
   const selection = useSelector(state => state.appState.selection);
   const { title, year, author } = selection;
   const dispatch = useDispatch();
+
   const close = e => {
     e.preventDefault();
-    dispatch(toggle());
+    dispatch(setPopup('closed'));
   };
-
-  const clickFocus = e => {
-    const div = document.getElementById('popupContainer');
-    div.focus();
-  }
+  const clickFocus = e => e.target.focus();
 
   const queryString = (title ? `${title}, ` : '') +
                       (author ? author.replace(/(.*), ?(.*)/, '$2 $1, ') : '') +
                       (year ? year : '');
+
+  const status = useSelector(state => state.appState.popupStatus);
+  const display = () => {
+    switch (status) {
+      case 'closed':
+        return null;
+        break;
+      case 'loading':
+        return <div>Loading from api...</div>;
+        break;
+      case 'confirmingBook':
+//        break;
+      case 'selectingSources':
+//        break;
+      default:
+        return null;
+      break;
+    };
+  }
 
   return (
     <div
@@ -28,6 +44,7 @@ export default props => {
       onClick={clickFocus}
     >
       <h4>{queryString}</h4>
+      {display()}
       <h4>Bibliography</h4>
       <form>
         <ul>

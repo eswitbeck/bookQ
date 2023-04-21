@@ -3,13 +3,14 @@ import { createSlice } from '@reduxjs/toolkit';
 export const appStateSlice = createSlice({
   name: 'appState',
   initialState: {
-    popup: false,
+    /* closed | loading | confirmingBook | selectingSources */
+    popupStatus: 'closed',
     selection: {},
   },
   reducers: {
-    toggle: state => {
-      state.popup = !state.popup;
-      if (!state.popup) state.selection = {};
+    setPopup: (state, action) => {
+      state.popupStatus = action.payload;
+      if (state.popupStatus === 'closed') state.selection = {};
     },
     changeSelection: (state, action) => {
       state.selection = action.payload;
@@ -17,6 +18,6 @@ export const appStateSlice = createSlice({
   }
 });
 
-export const { toggle, changeSelection } = appStateSlice.actions;
+export const { setPopup, changeSelection } = appStateSlice.actions;
 
 export default appStateSlice.reducer;

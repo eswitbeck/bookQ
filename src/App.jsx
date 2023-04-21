@@ -9,11 +9,11 @@ import './style.css';
 /* then render the switch of mainContainer v popupContainer */
 
 export default () => {
-  const popup = useSelector(state => state.appState.popup);
+  const popup = useSelector(state => state.appState.popupStatus);
 
   return (
     <>
-      {popup ? <PopupContainer /> : null}
+      {popup !== 'closed' ? <PopupContainer /> : null}
       <MainContainer />
     </>
   );
