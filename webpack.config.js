@@ -10,7 +10,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({
-      title: 'dev bookQueue',
+      title: 'dev bookQ',
       directory: path.resolve(__dirname, './public'),
     })
   ],

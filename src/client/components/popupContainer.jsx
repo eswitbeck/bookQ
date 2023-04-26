@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setPopup } from '../reducers/appStateReducer.js';
 
@@ -11,7 +11,6 @@ export default props => {
     e.preventDefault();
     dispatch(setPopup('closed'));
   };
-  const clickFocus = e => e.target.focus();
 
   const queryString = (title ? `${title}, ` : '') +
                       (author ? author.replace(/(.*), ?(.*)/, '$2 $1, ') : '') +
@@ -36,12 +35,15 @@ export default props => {
     };
   }
 
+  useEffect(() => {
+    document.querySelector('#popupContainer').focus();
+  });
+
   return (
     <div
       id='popupContainer'
       tabIndex='-1'
       onBlur={close}
-      onClick={clickFocus}
     >
       <h4>{queryString}</h4>
       {display()}

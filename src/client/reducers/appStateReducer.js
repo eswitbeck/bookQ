@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { crossref } from '../../api/crossref.js';
+import { crossref } from '../../server/crossref.js';
 
 
 const fetchMatches = createAsyncThunk(

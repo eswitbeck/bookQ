@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import MainContainer from './app/components/mainContainer.jsx';
-import PopupContainer from './app/components/popupContainer.jsx';
+import MainContainer from './client/components/mainContainer.jsx';
+import PopupContainer from './client/components/popupContainer.jsx';
 import './style.css';
 
 /* pull Boolean (or enum) from appState (useSelector)       */
